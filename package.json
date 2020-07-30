@@ -1,0 +1,20 @@
+{
+  "name": "puppr-server",
+  "version": "1.0.0",
+  "description": "Server for Puppr App",
+  "main": "./dist/server.js",
+  "scripts": {
+    "test": "ts-node ./lib/server.ts",
+    "dev": "tsc && nodemon ./dist/server.js",
+    "prod": "tsc && nodemon ./dist/server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/express": "^4.17.7",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.26",
+    "nodemon": "^2.0.4"
+  }
+}
