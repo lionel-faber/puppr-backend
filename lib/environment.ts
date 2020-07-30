@@ -13,7 +13,7 @@ class Environment {
     }
 
     getPort(): String {
-        return process.env.PORT
+        return (process.env.PORT || '5000')
     }
 
     getDBName(): String {

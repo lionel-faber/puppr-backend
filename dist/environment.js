@@ -12,7 +12,7 @@ class Environment {
         this.environment = environment;
     }
     getPort() {
-        return process.env.PORT;
+        return (process.env.PORT || '5000');
     }
     getDBName() {
         if (this.environment === Environments.prod_environment) {
