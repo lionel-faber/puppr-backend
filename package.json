@@ -4,7 +4,7 @@
   "description": "Server for Puppr App",
   "main": "./dist/server.js",
   "scripts": {
-    "start": "tsc && nodemon ./dist/server.js"
+    "start": "nodemon ./dist/server.js"
   },
   "author": "",
   "license": "ISC",
