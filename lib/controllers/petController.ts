@@ -11,7 +11,7 @@ export class PetController {
 
     public create_pet(req: Request, res: Response) {
         // this check whether all the filds were send through the request or not
-        if (req.body.name && req.body.gender && req.body.age && req.file && req.about) {
+        if (req.body.name && req.body.gender && req.body.age && req.file && req.body.about) {
             const pet_params: IPet = {
                 name: req.body.name,
                 gender: req.body.gender,
