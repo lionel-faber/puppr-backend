@@ -1,5 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const dotenv = require('dotenv');
+const path = require("path");
 var Environments;
 (function (Environments) {
     Environments["local_environment"] = "local";
@@ -10,6 +12,7 @@ var Environments;
 class Environment {
     constructor(environment) {
         this.environment = environment;
+        dotenv.config();
     }
     getPort() {
         return (process.env.PORT || '5000');
@@ -33,6 +36,13 @@ class Environment {
     }
     getDBPassword() {
         return process.env.DB_PASSWORD;
+    }
+    getStoragePath() {
+        return path.join(process.cwd(), 'dist', this.environment, 'public');
+    }
+    getAbsolutePath() {
+        console.log(path.join('dist', this.environment, 'public'));
+        return path.join('dist', this.environment, 'public');
     }
 }
 exports.default = new Environment(Environments.dev_environment);

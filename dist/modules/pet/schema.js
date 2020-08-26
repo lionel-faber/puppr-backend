@@ -6,6 +6,8 @@ const schema = new Schema({
     name: String,
     age: String,
     gender: String,
+    about: String,
+    image_url: String,
     is_deleted: {
         type: Boolean,
         default: false

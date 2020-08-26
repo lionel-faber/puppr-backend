@@ -1,8 +1,9 @@
-import { Request, Response } from 'express';
+import { Request, Response } from 'multer';
 import { insufficientParameters, mongoError, successResponse, failureResponse } from '../modules/common/service';
 import { IPet } from '../modules/pet/model';
 import PetService from '../modules/pet/service';
-import e = require('express');
+import Environment from '../environment';
+var multer = require("multer");
 
 export class PetController {
 
@@ -10,11 +11,13 @@ export class PetController {
 
     public create_pet(req: Request, res: Response) {
         // this check whether all the filds were send through the request or not
-        if (req.body.name && req.body.gender && req.body.age) {
+        if (req.body.name && req.body.gender && req.body.age && req.file && req.about) {
             const pet_params: IPet = {
                 name: req.body.name,
                 gender: req.body.gender,
                 age: req.body.age,
+                about: req.body.about,
+                image_url: '/static/' + req.file.filename
             };
             this.pet_service.addPet(pet_params, (err: any, pet_data: IPet) => {
                 if (err) {
@@ -38,4 +41,13 @@ export class PetController {
             }
         });
     }
+
+    public file_uploader = multer({
+        storage: multer.diskStorage({
+            destination: Environment.getStoragePath(),
+            filename: function (req, file, callback) {
+                callback(null, file.fieldname + "_" + Date.now() + file.originalname)
+            }
+        })
+    });
 }

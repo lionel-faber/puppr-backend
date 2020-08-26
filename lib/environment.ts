@@ -1,15 +1,18 @@
+const dotenv = require('dotenv');
+const path = require("path");
+
 enum Environments {
     local_environment = 'local',
     dev_environment = 'dev',
     prod_environment = 'prod',
     qa_environment = 'qa'
 }
-
 class Environment {
     private environment: String;
 
     constructor(environment: String) {
         this.environment = environment;
+        dotenv.config();
     }
 
     getPort(): String {
@@ -34,6 +37,15 @@ class Environment {
 
     getDBPassword(): String {
         return process.env.DB_PASSWORD
+    }
+
+    getStoragePath(): String {
+        return path.join(process.cwd(), 'dist', this.environment, 'public')
+    }
+
+    getAbsolutePath(): String {
+        console.log(path.join('dist', this.environment, 'public'))
+        return path.join('dist', this.environment, 'public')
     }
 }
 
