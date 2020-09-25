@@ -4,6 +4,7 @@ import * as mongoose from 'mongoose';
 import environment from "../environment";
 import { CommonRoutes } from "../routes/common_routes";
 import { PetRoutes } from "../routes/pet_routes";
+var cors = require('cors');
 
 class App {
 
@@ -30,6 +31,7 @@ class App {
         this.app.use(bodyParser.json());
         //support application/x-www-form-urlencoded post data
         this.app.use(bodyParser.urlencoded({ extended: false }));
+        this.app.use(cors());
     }
 
     private mongoSetup(): void {

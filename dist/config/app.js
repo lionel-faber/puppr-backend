@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 const environment_1 = require("../environment");
 const common_routes_1 = require("../routes/common_routes");
 const pet_routes_1 = require("../routes/pet_routes");
+var cors = require('cors');
 class App {
     constructor() {
         this.dbUser = environment_1.default.getDBUserName();
@@ -25,6 +26,7 @@ class App {
         this.app.use(bodyParser.json());
         //support application/x-www-form-urlencoded post data
         this.app.use(bodyParser.urlencoded({ extended: false }));
+        this.app.use(cors());
     }
     mongoSetup() {
         mongoose.connect(this.mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false });
