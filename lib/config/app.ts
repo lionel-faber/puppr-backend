@@ -11,7 +11,7 @@ class App {
     public app: express.Application;
     private dbUser: String = environment.getDBUserName();
     private dbPassword: String = environment.getDBPassword();
-    private dbName: String = environment.getDBUserName();
+    private dbName: String = environment.getDBName();
     
     public mongoUrl: string = `mongodb+srv://${this.dbUser}:${this.dbPassword}@puppr.arrmx.mongodb.net/${this.dbName}?retryWrites=true&w=majority`
 

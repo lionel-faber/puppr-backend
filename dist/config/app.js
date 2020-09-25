@@ -11,7 +11,7 @@ class App {
     constructor() {
         this.dbUser = environment_1.default.getDBUserName();
         this.dbPassword = environment_1.default.getDBPassword();
-        this.dbName = environment_1.default.getDBUserName();
+        this.dbName = environment_1.default.getDBName();
         this.mongoUrl = `mongodb+srv://${this.dbUser}:${this.dbPassword}@puppr.arrmx.mongodb.net/${this.dbName}?retryWrites=true&w=majority`;
         this.common_routes = new common_routes_1.CommonRoutes();
         this.pet_routes = new pet_routes_1.PetRoutes();

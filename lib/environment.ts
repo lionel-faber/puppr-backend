@@ -49,4 +49,4 @@ class Environment {
     }
 }
 
-export default new Environment(Environments.dev_environment);
+export default new Environment(process.env.ENV || Environments.dev_environment);

@@ -45,4 +45,4 @@ class Environment {
         return path.join('dist', this.environment, 'public');
     }
 }
-exports.default = new Environment(Environments.dev_environment);
+exports.default = new Environment(process.env.ENV || Environments.dev_environment);
